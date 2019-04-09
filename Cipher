@@ -2,18 +2,30 @@
 
 int main()
 {
-                                                      // ./a.out in terminal to use scanf()
-int key = 3,x;                                        // the rotation key shifts the characters between -25 and 25
-char message[100] = "this is a test";       // initialises an array to hold the value of characters of the message to be encrypted
-char character;                             // initialise variable to hold value of message charaters after encryption
+                            // ./a.out in terminal to use scanf()
+int key = 4,x;                               // the rotation key shifts the characters between -25 and 25
+char message[100] = "just test this is working abcdefg xyz", character;          // initialises an array to hold the value of the enters characters of the message to be encrypted
 
+//printf("enter message\n");
+//scanf("%s",message);
 
-for(x=0; message[x] != '\0'; x++)           // for loop to encrypt message up until the string termination given by '\0'
+for(x=0; message[x] != '\0'; x++)
 {
-    character = (char)((int)message[x] + key);  //
-    printf("%c",character);                     //
+    if(message[x]==' '){
+        message[x]=message[x] - key;
+    }
+    if(message[x] + key >= 'z')
+    {
+        message[x]=message[x] -'z' + 'a' -1;
+    }
+
+    character = (char)((int)message[x] + key);
+    printf("%c",character);
     
 }
+
+    
+
 
 return 0;
 }
