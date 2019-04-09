@@ -2,12 +2,13 @@
 
 int main()
 {
-                            // ./a.out in terminal to use scanf()
-int key = 4,x;                               // the rotation key shifts the characters between -25 and 25
-char message[100], character;          // initialises an array to hold the value of the enters characters of the message to be encrypted
+            // for decryption just put the key as negative
+                                        // ./a.out in terminal to use scanf()
+int key = 4,x;                          // the rotation key shifts the characters between -25 and 25
+char message[100], character;           // initialises an array to hold the value of the enters characters of the message to be encrypted
 
 printf("enter text for encryption \n");
-scanf("%s",message);
+scanf("%s",message);                    //reads up to 100 char and store into the array message
 
 for(x=0; message[x] != '\0'; x++)
 {
@@ -24,6 +25,37 @@ for(x=0; message[x] != '\0'; x++)
     
 }
 
+    
+
+
+return 0;
+}
+#include<stdio.h>
+
+int main()
+{
+            // for decryption just put the key as negative
+                                        // ./a.out in terminal to use scanf()
+int x,messx,newchar;                          // the rotation key shifts the characters between -25 and 25
+char message[100], character,key[26];           // initialises an array to hold the value of the enters characters of the message to be encrypted
+
+printf("enter text for encryption \n");
+scanf("%s",message);
+
+printf("enter substitution key \n");
+scanf("%s", key);
+
+for(x=0 ; message[x] != '\0' ; x++)
+{
+   
+   messx= (int)message[x]; 
+   newchar= messx-97;
+   
+   printf("%c",messx); 
+    
+    
+    
+}
     
 
 
