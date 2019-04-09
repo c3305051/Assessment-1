@@ -4,10 +4,10 @@ int main()
 {
                             // ./a.out in terminal to use scanf()
 int key = 4,x;                               // the rotation key shifts the characters between -25 and 25
-char message[100] = "just test this is working abcdefg xyz", character;          // initialises an array to hold the value of the enters characters of the message to be encrypted
+char message[100], character;          // initialises an array to hold the value of the enters characters of the message to be encrypted
 
-//printf("enter message\n");
-//scanf("%s",message);
+printf("enter text for encryption \n");
+scanf("%s",message);
 
 for(x=0; message[x] != '\0'; x++)
 {
