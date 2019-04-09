@@ -48,11 +48,10 @@ scanf("%s", key);
 for(x=0 ; message[x] != '\0' ; x++)
 {
    
-   messx= (int)message[x]; 
-   newchar= messx-97;
-   
-   printf("%c",messx); 
-    
+//   messx= (int)message[x]; 
+   newchar = message[x]-97;
+//   printf("%d\n", newchar);
+  printf("%c",key[newchar]);
     
     
 }
