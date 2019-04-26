@@ -15,9 +15,9 @@ for(x=0; message[x] != '\0'; x++)
     if(message[x]==' '){
         message[x]=message[x] - key;
     }
-    if(message[x] + key >= 'z')
+    if(message[x] + key >= 'Z')
     {
-        message[x]=message[x] -'z' + 'a' -1;
+        message[x]=message[x] -'Z' + 'A' -1;
     }
 
     character = (char)((int)message[x] + key);
@@ -49,7 +49,7 @@ for(x=0 ; message[x] != '\0' ; x++)
 {
    
 //   messx= (int)message[x]; 
-   newchar = message[x]-97;
+   newchar = message[x]-65;
 //   printf("%d\n", newchar);
   printf("%c",key[newchar]);
     
