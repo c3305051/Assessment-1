@@ -24,10 +24,6 @@ for(x=0; message[x] != '\0'; x++)
     printf("%c",character);
     
 }
-
-    
-
-
 return 0;
 }
 #include<stdio.h>
@@ -52,73 +48,124 @@ for(x=0 ; message[x] != '\0' ; x++)
    newchar = message[x]-65;
 //   printf("%d\n", newchar);
   printf("%c",key[newchar]);
-    
-    
 }
-    
-
-
-return 0;
+ return 0;
 }
-#include<stdio.h>
-#include <stdlib.h> 
-int main()
-{
-            // for decryption just put the key as negative
-                                        // ./a.out in terminal to use scanf()
-int key=1, message_length=0,ch,enc_ch,encmess_length=0;                          // the rotation key shifts the characters between -25 and 25
-char letter;          // initialises an array to hold the value of the enters characters of the message to be encrypted
 
-
-//printf("enter key");
-scanf("%d",&key);
-FILE *message;
-FILE *encmessage;
-message=fopen("message.txt","r");
-encmessage=fopen("encmessage.txt","w");
-
-/*while(1){
-    ch = fgetc(message);
-    if (ch== EOF){
-        break;
-    }
-    message_length++;
-
-    enc_ch=fgetc(encmessage) ;
-    if(enc_ch==EOF){
-        break;
-    }
-    encmess_length++;
- }
- printf("%d",encmess_length);
-printf("%d",message_length);
+/*
+  Rotation Cipher Encryption program
+  Write message to be encrypted in message.txt file and results will be written into the encmessage file
 */
-    while(feof(message)==0)
+
+#include<stdio.h>
+int main()
+{                                           
+int key;                            // the rotation key shifts the characters between -25 and 25
+char letter;                         // initialises an array to hold the value of the enters characters of the message to be encrypted
+
+
+printf("enter key");                
+scanf("%d",&key);                    //Reads user input to determine the cipher key
+FILE *message;                       //Initialises message file
+FILE *encmessage;                    //Initiialises encmessage file
+message= fopen("message.txt","r");      //opens message.txt file and sets to read only mode
+encmessage=fopen("encmessage.txt","w"); // opens encmessage.txt file and sets to write only mode
+
+    while(feof(message)==0)          //While loop to print letters until the last character from file has been read
         {
-        fscanf(message,"%c",&letter);  
+        fscanf(message,"%c",&letter);  //reads a char from message.txt and stores into letter
    
-        if( letter <'A' || letter>'Z')
+        if( letter <'A' || letter>'Z')  //condition for if character input is outside of ASCII range
             {
-               letter=letter - key;
-           }
-        else if(letter + key > 'Z')
+               letter=letter - key;     // adjusts value of letter so that same character is printed in output file
+            }
+        else if(letter + key > 'Z')     //Adjust value of letter if the value exceeds ASCII range and needs to be wrapped
             {
             letter=letter -'Z' + 'A' -1;
             }
-         else if(letter + key < 'A' && letter != 32)
+         else if(letter + key < 'A' && letter != 32) //Adjusts value of letter if key puts value out of ASCII range
             {
             letter=letter + key + 26;
-            }    
-            letter=letter + key;
-            fprintf(encmessage,"%C",letter);
+            }  
+            
+        letter=letter + key;                //Gives letter encoded ASCII value
+        fprintf(encmessage,"%C",letter);    //Prints encoded letter to output file
         }   
-
-
-
-   if( message == NULL )
-    {
-       printf("Error while opening the file.\n");   
-    }
-
+  
 return 0;
+}
+/*
+  Rotation Cipher decryption program
+  Write message to be decrypted in message.txt file and results will be written into the decrypted_message file
+*/
+
+#include<stdio.h>
+int main()
+{                                           
+int key;                            // the rotation key shifts the characters between -25 and 25
+char letter;                         // initialises an array to hold the value of the enters characters of the message to be decrypted
+
+
+printf("enter key");                
+scanf("%d",&key);                    //Reads user input to determine the cipher key
+FILE *message;                       //Initialises message file
+FILE *decrypted_message;                    //Initiialises decrypted_message file
+message= fopen("message.txt","r");      //opens message.txt file and sets to read only mode
+decrypted_message=fopen("decrypted_message.txt","w"); // opens decryptedmessage.txt file and sets to write only mode
+
+    while(feof(message)==0)          //While loop to print letters until the last character from file has been read
+        {
+        fscanf(message,"%c",&letter);  //Reads a char from message.txt and stores into letter variable
+   
+        if( letter <'A' || letter>'Z')  //condition for if character input is outside of ASCII range
+            {
+               letter=letter - key;     //Adjusts value of letter so that same character is printed in output file
+            }
+        else if(letter + key > 'Z')     //Adjust value of letter if the value exceeds ASCII range and needs to be wrapped
+            {
+            letter=letter -'Z' + 'A' -1;
+            }
+         else if(letter + key < 'A' && letter != 32) //Adjusts value of letter if key puts value out of ASCII range
+            {
+            letter=letter + key + 26;
+            }  
+            
+        letter=letter + key;                //Gives letter encoded ASCII value
+        fprintf(decrypted_message,"%C",letter);    //Prints decrypted letter to output file
+        }   
+  
+return 0;
+}
+
+//Substitution encryption program
+
+#include<stdio.h>
+int main()
+{
+int x;          //Used to run for loop determining when to stop encrypting
+int messx;      
+int newchar;                          
+char message[100];   //Initialises array to store message to be encrypted
+char key[26];   // initialises an array to store substitution key
+
+printf("enter text for encryption \n");
+scanf("%[^\n]",message);                //Scans input message for encryption and doesn't stop for spaces
+
+printf("enter substitution key \n");
+scanf("%s", key);
+
+for(x=0 ; message[x] != '\0' ; x++) //For-loop used to stop encryption when end of message array has been reached
+{
+   if(message[x]!=32)               //If character is not a full stop executes if statement
+   {
+     newchar = message[x]-65;       //Determines position of letter in alphabet to locate corresponding substitution 
+     printf("%c",key[newchar]);     //Prints encrypted letter
+   }
+   else if(message[x]==32){         //If character is a space, a space is printed to output
+       printf(" ");
+   }
+   
+}
+
+ return 0;
 }
