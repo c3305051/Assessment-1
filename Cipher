@@ -137,8 +137,9 @@ decrypted_message=fopen("decrypted_message.txt","w"); // opens decryptedmessage.
 return 0;
 }
 
-//Substitution encryption program
-
+/*
+Substitution encryption program
+*/
 #include<stdio.h>
 int main()
 {
@@ -158,14 +159,12 @@ for(x=0 ; message[x] != '\0' ; x++) //For-loop used to stop encryption when end 
 {
    if(message[x]!=32)               //If character is not a full stop executes if statement
    {
-     newchar = message[x]-65;       //Determines position of letter in alphabet to locate corresponding substitution 
-     printf("%c",key[newchar]);     //Prints encrypted letter
+        newchar = message[x]-65;       //Determines position of letter in alphabet to locate corresponding substitution 
+        printf("%c",key[newchar]);     //Prints encrypted letter
    }
    else if(message[x]==32){         //If character is a space, a space is printed to output
-       printf(" ");
+        printf(" ");
    }
-   
 }
-
- return 0;
+return 0;
 }
