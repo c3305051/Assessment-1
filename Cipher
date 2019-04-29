@@ -1,57 +1,3 @@
-#include<stdio.h>
-
-int main()
-{
-            // for decryption just put the key as negative
-                                        // ./a.out in terminal to use scanf()
-int key = 4,x;                          // the rotation key shifts the characters between -25 and 25
-char message[100], character;           // initialises an array to hold the value of the enters characters of the message to be encrypted
-
-printf("enter text for encryption \n");
-scanf("%s",message);                    //reads up to 100 char and store into the array message
-
-for(x=0; message[x] != '\0'; x++)
-{
-    if(message[x]==' '){
-        message[x]=message[x] - key;
-    }
-    if(message[x] + key >= 'Z')
-    {
-        message[x]=message[x] -'Z' + 'A' -1;
-    }
-
-    character = (char)((int)message[x] + key);
-    printf("%c",character);
-    
-}
-return 0;
-}
-#include<stdio.h>
-
-int main()
-{
-            // for decryption just put the key as negative
-                                        // ./a.out in terminal to use scanf()
-int x,messx,newchar;                          // the rotation key shifts the characters between -25 and 25
-char message[100], character,key[26];           // initialises an array to hold the value of the enters characters of the message to be encrypted
-
-printf("enter text for encryption \n");
-scanf("%s",message);
-
-printf("enter substitution key \n");
-scanf("%s", key);
-
-for(x=0 ; message[x] != '\0' ; x++)
-{
-   
-//   messx= (int)message[x]; 
-   newchar = message[x]-65;
-//   printf("%d\n", newchar);
-  printf("%c",key[newchar]);
-}
- return 0;
-}
-
 /*
   Rotation Cipher Encryption program
   Write message to be encrypted in message.txt file and results will be written into the encmessage file
@@ -162,7 +108,8 @@ for(x=0 ; message[x] != '\0' ; x++) //For-loop used to stop encryption when end 
         newchar = message[x]-65;       //Determines position of letter in alphabet to locate corresponding substitution 
         printf("%c",key[newchar]);     //Prints encrypted letter
    }
-   else if(message[x]==32){         //If character is a space, a space is printed to output
+   else if(message[x]==32)         //If character is a space, a space is printed to output
+   {
         printf(" ");
    }
 }
