@@ -17,11 +17,9 @@ FILE *encmessage;                       //Initiialises encmessage file
 message= fopen("message.txt","r");      //Opens message.txt file and sets to read only mode
 encmessage=fopen("encmessage.txt","w"); //Opens encmessage.txt file and sets to write only mode
 
-    while(feof(message)==0)             //While loop to print letters until the last character from file has been read
+    while(fscanf(message,"%c",&letter)!=EOF)             //While loop to print letters until the last character from file has been read
         {
-        fscanf(message,"%c",&letter);   //Reads a char from message.txt and stores into letter
-   
-        if( letter <'A' || letter>'Z')  //Condition for if character input is outside of ASCII range
+            if( letter <'A' || letter>'Z')  //Condition for if character input is outside of ASCII range
             {
                letter=letter - key;     //Adjusts value of letter so that same character is printed in output file
             }
@@ -59,11 +57,10 @@ FILE *decrypted_message;                 //Initiialises decrypted_message file
 message= fopen("message.txt","r");       //Opens message.txt file and sets to read only mode
 decrypted_message=fopen("decrypted_message.txt","w"); //Opens decryptedmessage.txt file and sets to write only mode
 
-    while(feof(message)==0)           //While loop to print letters until the last character from file has been read
+    while( fscanf(message,"%c",&letter)!=EOF)           //While loop to print letters until the last character from file has been read
         {
-        fscanf(message,"%c",&letter);  //Reads a char from message.txt and stores into letter variable
-   
-        if( letter <'A' || letter>'Z')  /Condition for if character input is outside of ASCII range
+         
+        if( letter <'A' || letter>'Z')  //Condition for if character input is outside of ASCII range
             {
                letter=letter - key;     //Adjusts value of letter so that same character is printed in output file
             }
